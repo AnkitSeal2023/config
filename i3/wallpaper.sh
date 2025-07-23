@@ -1,0 +1,1 @@
+feh --bg-fill /mnt/win/Users/ankit/Pictures/Wallpapers/Hyde/RosePine/burning_cherry.jpeg

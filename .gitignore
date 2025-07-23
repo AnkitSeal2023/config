@@ -1,0 +1,17 @@
+
+# Ignore everything
+*
+
+# But not these directories
+!i3/
+!i3blocks/
+!alacritty/
+!nvim/
+!normalCmds/
+# And not their contents
+!normalCmds/**
+!i3/**
+!i3blocks/**
+!alacritty/**
+!nvim/**
+!.gitignore

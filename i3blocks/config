@@ -1,0 +1,26 @@
+[dunst]
+command=~/.config/i3blocks/dunst
+interval=once
+signal=10
+
+[pomoApplet]
+command=~/.config/i3blocks/pomodoro/pomoApplet.sh
+interval=once
+
+[Pomodoro]
+command=~/.config/i3blocks/pomodoro/pomo.sh
+color=#F79494
+interval=1
+
+[time]
+command=date "+%a %d %b %Y %I:%M %p"
+interval=5
+
+[volume]
+command=pamixer --get-volume-human
+interval=1
+
+[calendar]
+full_text=📅
+command=~/.config/i3blocks/calendar.sh
+interval=once
