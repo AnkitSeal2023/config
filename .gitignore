@@ -11,6 +11,9 @@
 !picom/
 !polybar/
 !redshift/
+!gtk-4.0/
+!gtk-2.0/
+!gtk-3.0/
 # And not their contents
 !normalCmds/**
 !i3/**
@@ -21,3 +24,9 @@
 !picom/**
 !polybar/**
 !redshift/**
+!gtk-4.0/**
+!gtk-2.0/**
+!gtk-3.0/**
+!gtk-4.0/**
+!gtk-2.0/**
+!gtk-3.0/**
