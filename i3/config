@@ -176,6 +176,7 @@ exec --no-startup-id redshift
 exec --no-startup-id diodon
 exec --no-startup-id ~/.config/i3/wallpaper.sh
 exec --no-startup-id dunst
+exec --no-startup-id autotiling
 exec "picom --config ~/.config/picom/picom.conf"
 
 # resize window (you can also use the mouse for that)
