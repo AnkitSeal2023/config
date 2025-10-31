@@ -1,0 +1,20 @@
+#!/bin/bash
+
+STATE_FILE="/tmp/dunst_paused"
+
+# Toggle Dunst
+if pgrep -x dunst > /dev/null; then
+    if [ -f "$STATE_FILE" ]; then
+        dunstctl set-paused false
+        rm "$STATE_FILE"
+        echo "🔔"
+    else
+        dunstctl set-paused true
+        touch "$STATE_FILE"
+        echo "🔕"
+    fi
+else
+    echo "❌"
+    echo
+    echo "#888888"
+fi
