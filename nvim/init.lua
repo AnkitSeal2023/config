@@ -140,6 +140,9 @@ vim.o.timeoutlen = 300
 -- Configure how new splits should be opened
 vim.o.splitright = true
 vim.o.splitbelow = true
+vim.keymap.set('n', '<A-k>', '<cmd>m .-2<CR>==')
+vim.keymap.set('n', '<A-j>', '<cmd>m .+1<CR>==')
+vim.keymap.set('n', 'v', '^v$', {})
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
@@ -735,7 +738,7 @@ require('lazy').setup({
       }
 
       -- enable it
-      -- vim.lsp.enable 'htmx'
+      vim.lsp.enable 'htmx'
       -- vim.lsp.config.tailwindcss = {
       --   capabilities = require('blink.cmp').get_lsp_capabilities(),
       --   root_markers = { 'package.json', 'tailwind.config.js', 'tailwind.config.ts', '.git' },
