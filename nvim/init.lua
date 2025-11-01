@@ -1,8 +1,95 @@
+--[[
+
+=====================================================================
+==================== READ THIS BEFORE CONTINUING ====================
+=====================================================================
+========                                    .-----.          ========
+========         .----------------------.   | === |          ========
+========         |.-""""""""""""""""""-.|   |-----|          ========
+========         ||                    ||   | === |          ========
+========         ||   KICKSTART.NVIM   ||   |-----|          ========
+========         ||                    ||   | === |          ========
+========         ||                    ||   |-----|          ========
+========         ||:Tutor              ||   |:::::|          ========
+========         |'-..................-'|   |____o|          ========
+========         `"")----------------(""`   ___________      ========
+========        /::::::::::|  |::::::::::\  \ no mouse \     ========
+========       /:::========|  |==hjkl==:::\  \ required \    ========
+========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
+========                                                     ========
+=====================================================================
+=====================================================================
+
+What is Kickstart?
+
+  Kickstart.nvim is *not* a distribution.
+
+  Kickstart.nvim is a starting point for your own configuration.
+    The goal is that you can read every line of code, top-to-bottom, understand
+    what your configuration is doing, and modify it to suit your needs.
+
+    Once you've done that, you can start exploring, configuring and tinkering to
+    make Neovim your own! That might mean leaving Kickstart just the way it is for a while
+    or immediately breaking it into modular pieces. It's up to you!
+
+    If you don't know anything about Lua, I recommend taking some time to read through
+    a guide. One possible example which will only take 10-15 minutes:
+      - https://learnxinyminutes.com/docs/lua/
+
+    After understanding a bit more about Lua, you can use `:help lua-guide` as a
+    reference for how Neovim integrates Lua.
+    - :help lua-guide
+    - (or HTML version): https://neovim.io/doc/user/lua-guide.html
+
+Kickstart Guide:
+
+  TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
+
+    If you don't know what this means, type the following:
+      - <escape key>
+      - :
+      - Tutor
+      - <enter key>
+
+    (If you already know the Neovim basics, you can skip this step.)
+
+  Once you've completed that, you can continue working through **AND READING** the rest
+  of the kickstart init.lua.
+
+  Next, run AND READ `:help`.
+    This will open up a help window with some basic information
+    about reading, navigating and searching the builtin help documentation.
+
+    This should be the first place you go to look when you're stuck or confused
+    with something. It's one of my favorite Neovim features.
+
+    MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
+    which is very useful when you're not exactly sure of what you're looking for.
+
+  I have left several `:help X` comments throughout the init.lua
+    These are hints about where to find more information about the relevant settings,
+    plugins or Neovim features used in Kickstart.
+
+   NOTE: Look for lines like this
+
+    Throughout the file. These are for you, the reader, to help you understand what is happening.
+    Feel free to delete them once you know what you're doing, but they should serve as a guide
+    for when you are first encountering a few different constructs in your Neovim config.
+
+If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
+
+I hope you enjoy your Neovim journey,
+- TJ
+
+P.S. You can delete this when you're done too. It's your config now! :)
+--]]
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -161,7 +248,6 @@ rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
-  require 'kickstart.plugins.neo-tree',
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -408,40 +494,10 @@ require('lazy').setup({
     },
     config = function()
       local lspconfig = require 'lspconfig'
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-      local on_attach = function(_, bufnr)
-        -- optional keymaps for LSP actions
-        local opts = { buffer = bufnr }
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-      end
+      -- Use a loop to conveniently call 'setup' on multiple servers and
+      -- map buffer local keybindings when the language server attaches
 
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-      -- HTML lsp
-      -- lspconfig.html.setup {
-      --   on_attach = on_attach,
-      --   capabilities = capabilities,
-      --   filetypes = { 'html', 'templ' },
-      --
-      --   init_options = {
-      --     provideFormatter = true,
-      --     embeddedLanguages = {
-      --       css = true,
-      --       javascript = true,
-      --     },
-      --   },
-      -- }
-      --
-      -- -- HTMX LSP
-      lspconfig.htmx.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        filetypes = { 'html', 'templ' },
-      }
-      --
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -608,7 +664,8 @@ require('lazy').setup({
       --  By default, Neovim doesn't support everything that is in the LSP specification.
       --  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
       --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local original_capabilities = vim.lsp.protocol.make_client_capabilities()
+      local capabilities = require('blink.cmp').get_lsp_capabilities(original_capabilities)
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -619,19 +676,100 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+      -- NOTE: my additions:
+      vim.lsp.config.html = {
+        capabilities = require('blink.cmp').get_lsp_capabilities(),
+        filetypes = { 'html' },
+        root_markers = { 'package.json', 'index.html', '.git' },
+        init_options = {
+          provideFormatter = true,
+          embeddedLanguages = {
+            css = true,
+            javascript = true,
+          },
+        },
+      }
+      vim.lsp.enable 'html'
+
+      -- vim.lsp.config.ts_ls = {
+      --   capabilities = require('blink.cmp').get_lsp_capabilities(),
+      --   init_options = {
+      --     hostInfo = 'neovim',
+      --     preferences = {
+      --       includeCompletionsForModuleExports = true,
+      --       includeCompletionsWithSnippetText = true,
+      --       includeCompletionsWithClassMemberSnippets = true,
+      --       includeCompletionsWithObjectLiteralMethodSnippets = true,
+      --     },
+      --   },
+      -- }
+      -- vim.lsp.config['ts_ls'] = {
+      --   capabilities = require('blink.cmp').get_lsp_capabilities(),
+      --   filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+      -- }
+      --
+      vim.lsp.config.ts_ls = {
+        capabilities = require('blink.cmp').get_lsp_capabilities(),
+        filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+        init_options = {
+          hostInfo = 'neovim',
+          preferences = {
+            includeCompletionsForModuleExports = true,
+            includeCompletionsWithSnippetText = true,
+            includeCompletionsWithClassMemberSnippets = true,
+            includeCompletionsWithObjectLiteralMethodSnippets = true,
+          },
+        },
+      }
+
+      vim.lsp.enable 'ts_ls'
+
+      vim.lsp.config['htmx'] = {
+        filetypes = { 'html' },
+        root_markers = {
+          '*.html',
+          'tailwind.config.js',
+          'tailwind.config.ts',
+          '.git',
+        },
+      }
+
+      -- enable it
+      -- vim.lsp.enable 'htmx'
+      -- vim.lsp.config.tailwindcss = {
+      --   capabilities = require('blink.cmp').get_lsp_capabilities(),
+      --   root_markers = { 'package.json', 'tailwind.config.js', 'tailwind.config.ts', '.git' },
+      -- }
+      -- vim.lsp.enable 'tailwindcss'
+
+      vim.lsp.config.tailwindcss = {
+        capabilities = require('blink.cmp').get_lsp_capabilities(),
+        filetypes = { 'astro', 'javascript', 'typescript', 'typescriptreact', 'javascriptreact', 'html' },
+        root_markers = { 'tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'package.json', '.git' },
+        settings = {
+          tailwindCSS = {
+            includeLanguages = {
+              -- templ = 'html',
+            },
+          },
+        },
+      }
+
+      vim.lsp.enable 'tailwindcss'
+      vim.lsp.enable 'templ'
+
       local servers = {
+        ts_ls = {},
         clangd = {},
         gopls = {},
         pyright = {},
-        templ = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
         --
 
         lua_ls = {
@@ -648,6 +786,10 @@ require('lazy').setup({
             },
           },
         },
+        eslint = {},
+        tailwindcss = {},
+        cssls = {},
+        jsonls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -726,55 +868,6 @@ require('lazy').setup({
       },
     },
   },
-  {
-    'numToStr/Comment.nvim',
-    opts = {
-      -- add any options here
-      {
-        ---Add a space b/w comment and the line
-        padding = true,
-        ---Whether the cursor should stay at its position
-        sticky = true,
-        ---Lines to be ignored while (un)comment
-        ignore = nil,
-        ---LHS of toggle mappings in NORMAL mode
-        toggler = {
-          ---Line-comment toggle keymap
-          line = 'gcc',
-          ---Block-comment toggle keymap
-          block = 'gbc',
-        },
-        ---LHS of operator-pending mappings in NORMAL and VISUAL mode
-        opleader = {
-          ---Line-comment keymap
-          line = 'gc',
-          ---Block-comment keymap
-          block = 'gb',
-        },
-        ---LHS of extra mappings
-        extra = {
-          ---Add comment on the line above
-          above = 'gcO',
-          ---Add comment on the line below
-          below = 'gco',
-          ---Add comment at the end of line
-          eol = 'gcA',
-        },
-        ---Enable keybindings
-        ---NOTE: If given `false` then the plugin won't create any mappings
-        mappings = {
-          ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
-          basic = true,
-          ---Extra mapping; `gco`, `gcO`, `gcA`
-          extra = true,
-        },
-        ---Function to call before (un)comment
-        pre_hook = nil,
-        ---Function to call after (un)comment
-        post_hook = nil,
-      },
-    },
-  },
 
   { -- Autocompletion
     'saghen/blink.cmp',
@@ -798,12 +891,12 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+            end,
+          },
         },
         opts = {},
       },
@@ -845,7 +938,6 @@ require('lazy').setup({
         -- Adjusts spacing to ensure icons are aligned
         nerd_font_variant = 'mono',
       },
-
       cmdline = {
         keymap = {
           -- recommended, as the default keymap will only show and select the next item
@@ -865,17 +957,25 @@ require('lazy').setup({
           },
         },
       },
+      lsp = {
+        fallback_to_word = true,
+        insert_replace_support = true,
+      },
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
+        expand_snippet_on_overwrite = false,
+
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'lazydev', 'buffer' },
         providers = {
+          -- NOTE: breaking ....
+          lsp = { module = 'blink.cmp.sources.lsp' },
+
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-          templ = { name = 'templ', module = 'blink.cmp.sources.lsp' },
         },
       },
 
@@ -888,7 +988,7 @@ require('lazy').setup({
       -- the rust implementation via `'prefer_rust_with_warning'`
       --
       -- See :h blink-cmp-config-fuzzy for more information
-      fuzzy = { implementation = 'lua' },
+      fuzzy = { implementation = 'prefer_rust_with_warning' },
 
       -- Shows a signature help window while you type arguments for a function
       signature = { enabled = true },
@@ -963,7 +1063,25 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'templ',
+        'tsx',
+        'typescript',
+        'javascript',
+        'css',
+        'json',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -996,14 +1114,14 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  { import = 'custom.plugins' },
+  -- { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
