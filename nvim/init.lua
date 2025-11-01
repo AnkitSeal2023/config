@@ -3,7 +3,6 @@
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
@@ -408,6 +407,41 @@ require('lazy').setup({
       'saghen/blink.cmp',
     },
     config = function()
+      local lspconfig = require 'lspconfig'
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+      local on_attach = function(_, bufnr)
+        -- optional keymaps for LSP actions
+        local opts = { buffer = bufnr }
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+      end
+
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+      -- HTML lsp
+      -- lspconfig.html.setup {
+      --   on_attach = on_attach,
+      --   capabilities = capabilities,
+      --   filetypes = { 'html', 'templ' },
+      --
+      --   init_options = {
+      --     provideFormatter = true,
+      --     embeddedLanguages = {
+      --       css = true,
+      --       javascript = true,
+      --     },
+      --   },
+      -- }
+      --
+      -- -- HTMX LSP
+      lspconfig.htmx.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { 'html', 'templ' },
+      }
+      --
       -- Brief aside: **What is LSP?**
       --
       -- LSP is an initialism you've probably heard, but might not understand what it is.
@@ -692,6 +726,55 @@ require('lazy').setup({
       },
     },
   },
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      -- add any options here
+      {
+        ---Add a space b/w comment and the line
+        padding = true,
+        ---Whether the cursor should stay at its position
+        sticky = true,
+        ---Lines to be ignored while (un)comment
+        ignore = nil,
+        ---LHS of toggle mappings in NORMAL mode
+        toggler = {
+          ---Line-comment toggle keymap
+          line = 'gcc',
+          ---Block-comment toggle keymap
+          block = 'gbc',
+        },
+        ---LHS of operator-pending mappings in NORMAL and VISUAL mode
+        opleader = {
+          ---Line-comment keymap
+          line = 'gc',
+          ---Block-comment keymap
+          block = 'gb',
+        },
+        ---LHS of extra mappings
+        extra = {
+          ---Add comment on the line above
+          above = 'gcO',
+          ---Add comment on the line below
+          below = 'gco',
+          ---Add comment at the end of line
+          eol = 'gcA',
+        },
+        ---Enable keybindings
+        ---NOTE: If given `false` then the plugin won't create any mappings
+        mappings = {
+          ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+          basic = true,
+          ---Extra mapping; `gco`, `gcO`, `gcA`
+          extra = true,
+        },
+        ---Function to call before (un)comment
+        pre_hook = nil,
+        ---Function to call after (un)comment
+        post_hook = nil,
+      },
+    },
+  },
 
   { -- Autocompletion
     'saghen/blink.cmp',
@@ -763,6 +846,25 @@ require('lazy').setup({
         nerd_font_variant = 'mono',
       },
 
+      cmdline = {
+        keymap = {
+          -- recommended, as the default keymap will only show and select the next item
+          ['<Tab>'] = { 'show', 'accept' },
+          ['<Up>'] = { 'select_prev' },
+          ['<Down>'] = { 'select_next' },
+          ['<C-n>'] = { 'select_next' },
+          ['<C-p>'] = { 'select_prev' },
+        },
+        completion = {
+          menu = {
+            auto_show = function(ctx)
+              return vim.fn.getcmdtype() == ':'
+              -- enable for inputs as well, with:
+              -- or vim.fn.getcmdtype() == '@'
+            end,
+          },
+        },
+      },
       completion = {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
@@ -773,6 +875,7 @@ require('lazy').setup({
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          templ = { name = 'templ', module = 'blink.cmp.sources.lsp' },
         },
       },
 
@@ -900,7 +1003,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
