@@ -24,6 +24,8 @@ return {
         mappings = {
           ['\\'] = 'close_window',
           ['H'] = 'toggle_hidden',
+          ['V'] = 'open_vsplit',
+          ['S'] = 'open_split',
         },
       },
     },

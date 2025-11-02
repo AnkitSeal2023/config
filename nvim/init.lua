@@ -729,7 +729,6 @@ require('lazy').setup({
           },
         },
       }
-
       vim.lsp.enable 'ts_ls'
 
       vim.lsp.config['htmx'] = {
@@ -741,14 +740,12 @@ require('lazy').setup({
           '.git',
         },
       }
-
-      -- enable it
       vim.lsp.enable 'htmx'
-      -- vim.lsp.config.tailwindcss = {
-      --   capabilities = require('blink.cmp').get_lsp_capabilities(),
-      --   root_markers = { 'package.json', 'tailwind.config.js', 'tailwind.config.ts', '.git' },
-      -- }
-      -- vim.lsp.enable 'tailwindcss'
+
+      vim.lsp.config['sqls'] = {
+        filetypes = { 'sql' },
+      }
+      vim.lsp.enable 'sqls'
 
       vim.lsp.config.tailwindcss = {
         capabilities = require('blink.cmp').get_lsp_capabilities(),
@@ -765,6 +762,19 @@ require('lazy').setup({
 
       vim.lsp.enable 'tailwindcss'
       vim.lsp.enable 'templ'
+      vim.lsp.config['yamlls'] = {
+        on_attach = on_attach,
+        settings = {
+          yaml = {
+            schemas = {
+              ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
+              ['https://raw.githubusercontent.com/quantumblacklabs/kedro/develop/static/jsonschema/kedro-catalog-0.17.json'] = 'conf/**/*catalog*',
+            },
+          },
+        },
+      }
+
+      vim.lsp.enable 'yamlls'
 
       local servers = {
         ts_ls = {},

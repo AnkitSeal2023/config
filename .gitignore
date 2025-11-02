@@ -23,6 +23,7 @@
 !hypr/
 !waybar/
 !btop/
+!sqls/
 # And not their contents
 !normalCmds/**
 !i3/**
@@ -49,6 +50,7 @@
 !waybar/**
 !ocr.sh
 !btop/**
+!sqls/**
 zshrc
 tt.*
 .tests

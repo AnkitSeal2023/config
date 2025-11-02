@@ -1,0 +1,13 @@
+lowercaseKeywords: false
+connections:
+  - alias: local_sqlite
+    driver: sqlite3
+    dataSourceName: /home/ankit/Studies/coding/projects/passman/passman.db
+
+  # - alias: local_postgres
+  #   driver: postgresql
+  #   dataSourceName: host=127.0.0.1 port=5432 user=postgres password=x dbname=app_a sslmode=disable
+  #
+  # - alias: client_mysql
+  #   driver: mysql
+  #   dataSourceName: user:pass@tcp(127.0.0.1:3306)/client_app
