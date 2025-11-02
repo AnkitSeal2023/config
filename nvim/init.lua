@@ -742,9 +742,7 @@ require('lazy').setup({
       }
       vim.lsp.enable 'htmx'
 
-      vim.lsp.config['sqls'] = {
-        filetypes = { 'sql' },
-      }
+      vim.lsp.config['sqls'] = {}
       vim.lsp.enable 'sqls'
 
       vim.lsp.config.tailwindcss = {
@@ -886,7 +884,9 @@ require('lazy').setup({
       },
     },
   },
-
+  {
+    'nanotee/sqls.nvim',
+  },
   { -- Autocompletion
     'saghen/blink.cmp',
     event = 'VimEnter',
@@ -1087,6 +1087,7 @@ require('lazy').setup({
         'diff',
         'html',
         'templ',
+        'sql',
         'tsx',
         'typescript',
         'javascript',
