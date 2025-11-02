@@ -49,6 +49,7 @@
 !waybar/**
 !ocr.sh
 !btop/**
+zshrc
 tt.*
 .tests
 doc/tags
