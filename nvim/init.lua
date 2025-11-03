@@ -759,6 +759,12 @@ require('lazy').setup({
       }
 
       vim.lsp.enable 'tailwindcss'
+
+      vim.lsp.config.emmet_language_server = {
+        filetypes = { 'html', 'css', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        capabilities = capabilities,
+      }
+
       vim.lsp.enable 'templ'
       vim.lsp.config['yamlls'] = {
         on_attach = on_attach,
