@@ -43,6 +43,7 @@ require("lazy").setup({
     require("plugins.treesitter"),
     require("plugins.neo-tree"),
     { "nvim-java/nvim-java" },
+    { "github/copilot.vim" },
 }, {
     ui = require("misc.ui"),
 })
