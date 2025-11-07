@@ -51,6 +51,7 @@
 !ocr.sh
 !btop/**
 !sqls/**
+!tmux/tmux.conf
 zshrc
 tt.*
 .tests

@@ -3,7 +3,7 @@ vim.o.relativenumber = true
 vim.o.mouse = "a"
 vim.o.showmode = false
 vim.schedule(function()
-    vim.o.clipboard = "unnamedplus"
+	vim.o.clipboard = "unnamedplus"
 end)
 vim.o.breakindent = true
 vim.o.undofile = true
@@ -21,4 +21,3 @@ vim.o.inccommand = "split"
 vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
-vim.opt.statusline:append(" %p%%")

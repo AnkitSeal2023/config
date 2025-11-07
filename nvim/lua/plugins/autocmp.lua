@@ -58,7 +58,7 @@ return { -- Autocompletion
 		completion = {
 			-- By default, you may press `<c-space>` to show the documentation.
 			auto_show = true,
-			expand_snippet_on_overwrite = false,
+			-- expand_snippet_on_overwrite = false,
 
 			documentation = { auto_show = false, auto_show_delay_ms = 500 },
 		},
