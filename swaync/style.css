@@ -2,27 +2,32 @@
 	--border-radius: 15px;
 	--cc-bg: transparent;
 
-	--widget-background: rgba(255, 255, 255, 0.05);
+	--widget-background: rgba(26, 255, 238, 0.05);
 	--noti-bg-alpha: 0.6;
 	--padding: calc(var(--border-radius) / 2);
 }
 
 * {
 	font-size: 12px;
-	/* all: unset; */
+	color: rgb(166, 230, 235);
 }
 
-.blank-window {  
-  background:none ;
+.blank-window {
+	background: none;
 }
 
 .control-center {
-	background: rgb(26, 27, 38);
+	background: rgba(43, 85, 101, 0.4);
+
 	backdrop-filter: blur(50px);
 	border-radius: 20px;
-	border: 1px solid rgba(255, 255, 255, 0.3);
+	border: 1px solid rgba(102, 146, 163, 0.8);
 	border-radius: 10px;
-	backdrop-filter: blur(20px);
+	backdrop-filter: blur(200px);
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, .6);
+	padding: 0;
+	margin: 0;
+
 }
 
 .widgets>.widget,
@@ -30,31 +35,54 @@
 	background: var(--widget-background);
 	border-radius: var(--border-radius);
 	padding: calc(var(--border-radius) / 2);
-	border: var(--border);
 }
-.widget-mpris>box>button{
+
+.widget-mpris>carouselindicatordots {
+	border: var(--border);
+
+}
+
+.widgets>.widget-notifications {
+	background: rgba(43, 85, 101, 0.5);
+	background: transparent;
+	padding: 0;
+	/* border: var(--border); */
+
+
+}
+
+.widget-mpris>box>button {
 	background: var(--widget-background);
 	border-radius: var(--border-radius);
 	padding: calc(var(--border-radius) / 2);
-	border: var(--border);
-	/* padding-top: 20px; */
-	/* border-radius: 100%; */
+	/* border: var(--border); */
+	padding: 0px;
+	margin: 0px;
 }
+
+.widget-mpris>box {
+	padding: 0px;
+	margin: 0px;
+}
+
 .control-center-list-placeholder {
 	padding: none;
 	visibility: hidden;
 }
 
 .notification-group {
-	border-radius: var(--border-radius);
+	background-color: transparent;
+	/* border-radius: var(--border-radius); */
 	padding: 0px;
 }
 
-.widget.widget-mpris {
+.widgets>.widget-mpris {
 	background: transparent;
+	/* background-color: red; */
 	border-radius: 0;
-	padding: 0;
-	border: none;
+	/* border: 1px solid rgba(102, 146, 163, 0.3); */
+	border-radius: 24px;
+	padding: 2;
 }
 
 .widget.widget-mpris>carouselindicatordots {
@@ -68,11 +96,12 @@
 
 .widget-mpris>box>button:hover {
 	background: rgba(46, 46, 46, 1);
+	background: rgba(46, 46, 46, 0.5);
 }
 
 .widget-mpris-player {
 	box-shadow: none;
-	border: var(--border);
+	/* border: var(--border); */
 	margin: 0 var(--padding);
 }
 
@@ -82,18 +111,27 @@
 
 /* NOTIFFS */
 
-@define-color background          rgb(46, 46, 46);
-@define-color selected          rgba(255, 255, 255, 0.3);
-	
-
 .floating-notifications.background .notification-row .notification-background {
-  background: alpha(rgba(46, 46, 46, 1), .55);
-  box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 24px;
-  margin: 16px;
-  padding: 0;
+	background: alpha(rgba(43, 85, 101, 1), 0.75);
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, .6);
+	/* border: 2px solid rgba(26, 255, 238, 0.3); */
+	border-radius: 24px;
+	margin: 16px;
+	padding: 0;
 }
-.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
-  min-height: 3.4em;
+
+.floating-notifications.background .notification-row .notification-background .notification>*:last-child>* {
+	min-height: 3.4em;
+}
+
+.notification {
+	border: 1px solid rgba(26, 255, 238, 0.3);
+	background: alpha(rgba(43, 85, 101, 1), 0.75);
+	box-shadow: none;
+	padding: 0;
+}
+
+.notification:hover {
+	/* background-color: rgba(43, 85, 101, 1); */
+	border: 1px solid rgba(26, 255, 238, 1.0);
 }

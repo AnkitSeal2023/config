@@ -8,7 +8,7 @@
 	"control-center-margin-bottom": 8,
 	"control-center-margin-right": 8,
 	"control-center-margin-left": 8,
-	"control-center-width": 300,
+	"control-center-width": 400,
 	"control-center-height": -1,
 	"fit-to-screen": false,
 	"layer-shell-cover-screen": true,
@@ -58,9 +58,7 @@
 		},
 		"mpris": {
 			"autohide": true,
-			// "album-art-icon-size":20,
-			"image-size": 60,
-			// "image-radius": 1
+			"image-size": 60
 		}
 	}
 }
