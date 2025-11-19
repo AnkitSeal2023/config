@@ -24,6 +24,7 @@
 !waybar/
 !btop/
 !sqls/
+!swaync/
 # And not their contents
 !normalCmds/**
 !i3/**
@@ -51,6 +52,7 @@
 !ocr.sh
 !btop/**
 !sqls/**
+!swaync/**
 !tmux/tmux.conf
 zshrc
 tt.*
