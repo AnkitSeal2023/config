@@ -1,33 +1,53 @@
 :root {
-	--border-radius: 22px;
+	--border-radius: 15px;
 	--cc-bg: transparent;
 
-	--widget-background: rgba(46, 46, 46, 0.7);
+	--widget-background: rgba(255, 255, 255, 0.05);
 	--noti-bg-alpha: 0.6;
-
 	--padding: calc(var(--border-radius) / 2);
 }
 
+* {
+	font-size: 12px;
+	/* all: unset; */
+}
+
+.blank-window {  
+  background:none ;
+}
+
 .control-center {
-	border-radius: 0;
+	background: rgb(26, 27, 38);
+	backdrop-filter: blur(50px);
+	border-radius: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 10px;
+	backdrop-filter: blur(20px);
 }
 
 .widgets>.widget,
-.widget-mpris>carouselindicatordots,
-.widget-mpris>box>button {
+.widget-mpris>carouselindicatordots {
 	background: var(--widget-background);
 	border-radius: var(--border-radius);
 	padding: calc(var(--border-radius) / 2);
 	border: var(--border);
 }
-
+.widget-mpris>box>button{
+	background: var(--widget-background);
+	border-radius: var(--border-radius);
+	padding: calc(var(--border-radius) / 2);
+	border: var(--border);
+	/* padding-top: 20px; */
+	/* border-radius: 100%; */
+}
 .control-center-list-placeholder {
-	padding: var(--border-radius);
+	padding: none;
+	visibility: hidden;
 }
 
 .notification-group {
 	border-radius: var(--border-radius);
-	padding: 8px;
+	padding: 0px;
 }
 
 .widget.widget-mpris {
@@ -58,4 +78,22 @@
 
 .widget-mpris-player:only-child {
 	margin: 0;
+}
+
+/* NOTIFFS */
+
+@define-color background          rgb(46, 46, 46);
+@define-color selected          rgba(255, 255, 255, 0.3);
+	
+
+.floating-notifications.background .notification-row .notification-background {
+  background: alpha(rgba(46, 46, 46, 1), .55);
+  box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  margin: 16px;
+  padding: 0;
+}
+.floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
+  min-height: 3.4em;
 }
