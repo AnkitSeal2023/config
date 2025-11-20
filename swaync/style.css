@@ -113,8 +113,8 @@
 
 .floating-notifications.background .notification-row .notification-background {
 	background: alpha(rgba(43, 85, 101, 1), 0.75);
-	box-shadow: 0 0 8px 0 rgba(0, 0, 0, .6);
-	/* border: 2px solid rgba(26, 255, 238, 0.3); */
+	box-shadow: none;
+	border: 1px solid rgba(26, 255, 238, 0.3);
 	border-radius: 24px;
 	margin: 16px;
 	padding: 0;
@@ -126,8 +126,8 @@
 
 .notification {
 	border: 1px solid rgba(26, 255, 238, 0.3);
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, .6);
 	background: alpha(rgba(43, 85, 101, 1), 0.75);
-	box-shadow: none;
 	padding: 0;
 }
 
