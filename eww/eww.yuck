@@ -1,0 +1,56 @@
+;; -------------------------------
+;;  Widget Definition
+;; -------------------------------
+
+(defpoll get-vol :interval "200ms"
+                  `bash ./scripts/get-vol.sh`
+)
+
+(defwidget greeter [?text name]
+  (box :class "volume-box"
+       :orientation "horizontal"
+       :halign "center"
+       :spacing 10
+    (button :class "greet-btn"
+            :onclick "notify-send 'Hello' 'Hello, ${name}'"
+      "Greet")))
+
+(defwidget slider  [?value ?min ?max ?step ?onchange]
+  (box :class "volume-slider-box"
+       :orientation "horizontal"
+       :halign "center"
+       :spacing 10
+  
+  (scale 
+            :class "volume-slider"
+            :orientation "horizontal"
+            :value get-vol 
+            :min min
+            :max max
+            :draw-value false
+            :onchange "pamixer --set-volume {}"
+            
+    )))
+;; -------------------------------
+;;  Window
+;; -------------------------------
+
+(defwindow example
+  :monitor 0
+  :class "eww-volume"
+  :geometry (geometry :x "0%"
+                      :y "900px"
+                      :width "30%"
+                      :height "30px"
+                      :anchor "top center")
+  :stacking "overlay"
+  :reserve (struts :distance "40px" :side "top")
+  :windowtype "dock"
+  :wm-ignore false
+      (box :class "right"
+         :halign "center"
+         :spacing 20
+         :space-evenly false
+        (slider :value 50)get-vol)
+  )
+

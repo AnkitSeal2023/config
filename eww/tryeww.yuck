@@ -1,0 +1,34 @@
+;; -------------------------------
+;;  Widget Definition
+;; -------------------------------
+
+(defwidget greeter [text name]
+  (box :class "volume-box"
+       :orientation "horizontal"
+       :halign "center"
+       :spacing 10
+    text
+    (button :class "greet-btn"
+            :onclick "notify-send 'Hello' 'Hello, ${name}'"
+      "Greet")))
+
+;; -------------------------------
+;;  Window
+;; -------------------------------
+
+(defwindow example
+  :monitor 0
+  :class "eww-volume"
+  :geometry (geometry :x "0%"
+                      :y "20px"
+                      :width "90%"
+                      :height "30px"
+                      :anchor "top center")
+  :stacking "overlay"
+  :reserve (struts :distance "40px" :side "top")
+  :windowtype "dock"
+  :wm-ignore false
+
+  (greeter :text "Say hello!"
+           :name "Tim"))
+

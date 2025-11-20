@@ -33,7 +33,8 @@
 		"inhibitors",
 		"dnd",
 		"mpris",
-		"notifications"
+		"notifications",
+		"backlight"
 	],
 	"widget-config": {
 		"notifications": {
@@ -59,6 +60,9 @@
 		"mpris": {
 			"autohide": true,
 			"image-size": 60
+		},
+		"backlight": {
+			"step-size": 10
 		}
 	}
 }

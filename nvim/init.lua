@@ -46,6 +46,7 @@ require("lazy").setup({
 	{ "nvim-java/nvim-java" },
 	{ "github/copilot.vim" },
 	require("plugins.statusline"),
+	{ "elkowar/yuck.vim" },
 }, {
 	ui = require("misc.ui"),
 })

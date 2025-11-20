@@ -1,0 +1,57 @@
+window {
+	background: transparent;
+	padding: 10px;
+	/* background: rgba(0, 0, 0, 0.3); */
+}
+
+label {
+	color: white;
+}
+
+.eww-volume {
+	background-color: red;
+}
+
+.volume-box {
+	background: red;
+	border-radius: 5px;
+}
+
+.volume-slider-box {
+	min-width: 110px;
+}
+
+.volume-slider-box label {
+	padding: 0px;
+	min-width: 0;
+	background-clip: unset;
+}
+
+.volume-slider trough {
+	background-color: rgba(97, 97, 97, 0.8);
+	min-height: 4px;
+	padding: 0;
+}
+
+.volume-slider trough>highlight {
+	background-color: rgba(26, 255, 238, 1);
+}
+
+.volume-slider slider {
+	background-color: rgba(0, 0, 0, 0.0);
+	border: none;
+	box-shadow: none;
+	min-height: 9px;
+	min-width: 9px;
+}
+
+.right {
+	background-color: red;
+	background: rgba(33, 33, 33, 0.5);
+	border-radius: 10px;
+	padding: 0;
+}
+
+.right label {
+	padding-right: 9;
+}
