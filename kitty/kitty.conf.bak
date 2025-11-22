@@ -29,16 +29,16 @@ enable_audio_bell no
 # linux_display_server x11
 
 program nvim
-# font_family JetBrainsMono Nerd Font
+  font_family JetBrainsMono Nerd Font
 
 
 # font
 # font_family        BlexMono Nerd Font Mono
 # font_family        BlexMono Nerd Font Propo
-# font_family        JetBrainsMono Nerd Font
-# bold_font          auto
-# italic_font        auto
-# bold_italic_font   auto
+font_family        JetBrainsMono Nerd Font
+bold_font          auto
+italic_font        auto
+bold_italic_font   auto
 font_size 9.5
 
 # font size management 
@@ -99,11 +99,3 @@ allow_remote_control yes
 listen_on unix:/tmp/kitty
 
 text_antialiasing gray
-
-
-# BEGIN_KITTY_FONTS
-font_family      family="Ioskeley Mono"
-bold_font        auto
-italic_font      auto
-bold_italic_font auto
-# END_KITTY_FONTS

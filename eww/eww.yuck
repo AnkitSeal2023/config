@@ -39,7 +39,7 @@
   :monitor 0
   :class "eww-volume"
   :geometry (geometry :x "0%"
-                      :y "900px"
+                      :y "920px"
                       :width "30%"
                       :height "30px"
                       :anchor "top center")

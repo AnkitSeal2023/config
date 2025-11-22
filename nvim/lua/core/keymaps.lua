@@ -12,3 +12,6 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<leader>ce", ":Copilot enable<CR>")
 vim.keymap.set("n", "<leader>cd", ":Copilot disable<CR>")
+vim.keymap.set("n", "<leader>p", ":Huefy<CR>")
+vim.keymap.set("n", "<leader>cs", ":Telescope colorscheme<CR>")
+require("core.barbar_keymaps").setup()
