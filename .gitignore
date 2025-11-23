@@ -26,6 +26,7 @@
 !sqls/
 !swaync/
 !swaync1/
+!rofi/
 # And not their contents
 !normalCmds/**
 !i3/**
@@ -55,6 +56,7 @@
 !sqls/**
 !swaync/**
 !swaync1/**
+!rofi/**
 !tmux/tmux.conf
 zshrc
 tt.*

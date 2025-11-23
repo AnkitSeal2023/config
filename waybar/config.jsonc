@@ -103,10 +103,10 @@
 		},
 		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-		"on-click-middle": "pavucontrol",
-		"on-scroll-up": "pamixer -i 1 && eww open example && sleep 2 && killall eww",
-		"on-scroll-down": "pamixer -d 1 && eww open example && sleep 2 && killall eww",
-		"on-change": "eww open example"
+		"on-click-middle": "pavucontrol"
+		// "on-scroll-up": "pamixer -i 1 && eww open example && sleep 2 && killall eww",
+		// "on-scroll-down": "pamixer -d 1 && eww open example && sleep 2 && killall eww",
+		// "on-change": "eww open example"
 	},
 	"custom/dunst": {
 		"exec": "dunstctl is-paused | grep -q true && echo '' || echo ''",
