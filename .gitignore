@@ -27,6 +27,7 @@
 !swaync/
 !swaync1/
 !rofi/
+!hyprpanel/
 # And not their contents
 !normalCmds/**
 !i3/**
@@ -57,6 +58,7 @@
 !swaync/**
 !swaync1/**
 !rofi/**
+!hyprpanel/** 
 !tmux/tmux.conf
 zshrc
 tt.*

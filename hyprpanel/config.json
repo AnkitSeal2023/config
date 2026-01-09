@@ -1,0 +1,7 @@
+{
+  "bar.customModules.storage.paths": [
+    "/"
+  ],
+  "menus.media.displayTimeTooltip": false,
+  "menus.media.hideAuthor": false
+}

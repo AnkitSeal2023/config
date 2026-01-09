@@ -4,7 +4,7 @@
 options="Sleep\nShutdown\nReboot\nLock\nLogout"
 
 # Show menu
-choice=$(echo -e $options | rofi -dmenu -p "Power")
+choice=$(echo -e $options | rofi -dmenu -p "Power" -config ~/.config/rofi/style9.rasi)
 
 case $choice in
     Sleep)
