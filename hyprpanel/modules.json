@@ -1,1 +1,115 @@
-{}
+{
+  "workspaces": {
+    "type": "workspaces",
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "disable-scroll": false,
+    "all-outputs": true,
+    "warp-on-scroll": true,
+    "format": "{icon}",
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    }
+  },
+  "cava": {
+    "type": "custom",
+    "format": "{text}",
+    "exec": "~/.config/waybar/cava/cava_module.py",
+    "return-type": "json"
+  },
+  "mpris": {
+    "type": "mpris",
+    "format": "{player_icon} {title} - {artist}",
+    "format-paused": "{status_icon} {title} - {artist}",
+    "tooltip-format": "Playing: {title} - {artist}",
+    "tooltip-format-paused": "Paused: {title} - {artist}",
+    "player-icons": {
+      "default": "󰏤"
+    },
+    "status-icons": {
+      "paused": "󰐊"
+    },
+    "max-length": 20
+  },
+  "clock": {
+    "type": "clock",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
+    "calendar": {
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "format-alt": "{:%d-%m-%Y}"
+  },
+  "network": {
+    "type": "network",
+    "interface": "enp6s0",
+    "format": " {bandwidthDownBytes}  {bandwidthUpBytes} ",
+    "interval": 1
+  },
+  "pulseaudio": {
+    "type": "pulseaudio",
+    "scroll-step": 1,
+    "format": "{volume}% {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-click-middle": "pavucontrol"
+  },
+  "notification": {
+    "type": "custom",
+    "tooltip": true,
+    "format": "<span>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "on-click-middle": "swaync-client -c -sw",
+    "escape": true
+  },
+  "tray": {
+    "type": "tray",
+    "spacing": 10,
+    "max-length": 0
+  },
+  "power": {
+    "type": "custom",
+    "format": "⏻ ",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/power-options.sh"
+  }
+}

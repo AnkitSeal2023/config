@@ -19,12 +19,11 @@
 .control-center {
 	background: rgba(43, 85, 101, 0.4);
 
-	backdrop-filter: blur(50px);
 	border-radius: 20px;
 	border: 1px solid rgba(102, 146, 163, 0.8);
 	border-radius: 10px;
-	backdrop-filter: blur(200px);
-	box-shadow: 0 0 8px 0 rgba(0, 0, 0, .6);
+	/* backdrop-filter: blur(200px); */
+	/* box-shadow: 0 0 8px 0 rgba(0, 0, 0, .6); */
 	padding: 0;
 	margin: 0;
 
