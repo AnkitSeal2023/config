@@ -28,6 +28,8 @@
 !swaync1/
 !rofi/
 !hyprpanel/
+!waybar/
+!wayle/
 # And not their contents
 !normalCmds/**
 !i3/**
@@ -60,6 +62,10 @@
 !rofi/**
 !hyprpanel/** 
 !tmux/tmux.conf
+!waybar/**
+!wayle/**
+wayle/wayle-repo/**
+wayle/wayle-repo/
 zshrc
 tt.*
 .tests

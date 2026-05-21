@@ -10,11 +10,11 @@
 	],
 	"modules-center": [
 		"clock",
-		// "custom/dunst"
 		"custom/notification"
 	],
 	"modules-right": [
 		"network",
+		"memory",
 		"pulseaudio",
 		"tray",
 		"custom/power"
@@ -78,6 +78,12 @@
 			}
 		},
 		"format-alt": "{:%d-%m-%Y}"
+	},
+	"memory": {
+		"interval": 5,
+		"format": " {percentage}%",
+		"tooltip": true,
+		"tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G"
 	},
 	"network": {
 		"interface": "enp6s0", // or "eth0"

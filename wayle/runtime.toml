@@ -1,0 +1,69 @@
+[general]
+font-sans = "JetBrainsMono Nerd Font"
+
+[bar]
+scale = 0.8999999761581421
+border-color = "bg-active"
+button-icon-size = 0.800000011920929
+button-label-weight = "bold"
+button-group-background = "bg-surface-elevated"
+button-group-border-color = "accent"
+
+[[bar.layout]]
+monitor = "*"
+show = true
+left = [
+    "hyprland-workspaces",
+    "media",
+    "cava",
+]
+center = [
+    "clock",
+    "notifications",
+]
+right = [
+    "netstat",
+    "ram",
+    { name = "audio", modules = [
+    "volume",
+    "microphone",
+] },
+    "systray",
+    "dashboard",
+]
+
+[styling]
+scale = 1.0
+
+[styling.palette]
+bg = "#11111b"
+surface = "#181825"
+elevated = "#1e1e2e"
+fg = "#cdd6f4"
+fg-muted = "#bac2de"
+primary = "#b4befe"
+red = "#f38ba8"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+blue = "#74c7ec"
+
+[modules.cava]
+bars = 45
+monstercat = 0.7
+style = "peaks"
+direction = "reverse"
+bar-width = 2
+
+[modules.clock]
+label-color = "border-accent"
+
+[modules.hyprland-workspaces]
+min-workspace-count = 0
+icon-size = 0.75
+active-indicator = "underline"
+
+[modules.weather]
+location = "Kolkata"
+
+[wallpaper]
+engine-enabled = false

@@ -1,0 +1,235 @@
+# Wayle configuration file
+[general]
+font-sans = "Blex Mono Nerd Font"
+font-mono = "JetBrains Mono"
+tearing-mode = true
+
+[bar]
+scale = 0.85
+inset-edge = 0.3
+inset-ends = 0.0
+padding = 0.0001
+padding-ends = 0.5
+module-gap = 0.5
+location = "bottom"
+bg = "transparent"
+background-opacity = 100
+border-location = "none"
+border-width = 10
+border-color = "border-accent"
+rounding = "sm"
+shadow = "none"
+button-variant = "basic"
+button-opacity = 100
+button-bg-opacity = 100
+button-icon-size = 1.0
+button-icon-padding = 1.0
+button-label-size = 1.0
+button-label-weight = "semibold"
+button-label-padding = 1.0
+button-rounding = "sm"
+button-gap = 1.0
+button-icon-position = "end"
+button-border-location = "all"
+button-border-width = 1
+button-group-border-location = "none"
+button-group-border-width = 1
+button-group-padding = 0.0
+button-group-module-gap = 0.25
+button-group-background = "bg-elevated"
+button-group-opacity = 100
+button-group-border-color = "border-accent"
+button-group-rounding = "sm"
+dropdown-shadow = true
+dropdown-opacity = 100
+dropdown-autohide = true
+dropdown-freeze-label = true
+
+[[bar.layout]]
+monitor = "*"
+left = ["hyprland-workspaces", "media", "cava"]
+right = ["netstat","ram", {name = "audio" , modules = ["volume", "microphone"]}, "systray"]
+center = ["clock", "dashboard", "notifications"]
+
+[modules.hyprland-workspaces]
+min-workspace-count = 1
+monitor-specific = true
+show-special = false
+urgent-show = true
+urgent-mode = "workspace"
+display-mode = "icon"
+label-use-name = false
+numbering = "relative"
+divider = " "
+app-icons-show = false
+app-icons-dedupe = true
+app-icons-fallback = "ld-app-window-symbolic"
+app-icons-empty = "tb-minus-symbolic"
+icon-gap = 0.30000001192092896
+workspace-padding = 0.45
+icon-size = 1.0
+label-size = 1.0
+workspace-ignore = []
+active-indicator = "background"
+active-color = "accent"
+occupied-color = "fg-muted"
+empty-color = "fg-subtle"
+container-bg-color = "bg-surface-elevated"
+border-show = false
+border-color = "border-default"
+
+[modules.hyprland-workspaces.app-icon-map]
+[modules.hyprland-workspaces.workspace-map]
+1 = { icon = "media-record-symbolic" }
+2 = { icon = "media-record-symbolic" }
+3 = { icon = "media-record-symbolic" }
+4 = { icon = "media-record-symbolic" }
+5 = { icon = "media-record-symbolic" }
+6 = { icon = "media-record-symbolic" }
+7 = { icon = "media-record-symbolic" }
+8 = { icon = "media-record-symbolic" }
+9 = { icon = "media-record-symbolic" }
+10 = { icon = "media-record-symbolic" }
+
+[modules.media]
+icon-type = "spinning-disc"
+players-ignored = []
+player-priority = []
+format = "{{ status_icon }} {{ title }} - {{ artist }}"
+icon-name = "ld-music-symbolic"
+spinning-disc-icon = "si-spotify-symbolic"
+border-show = false
+border-color = "blue"
+icon-show = true
+icon-color = "auto"
+icon-bg-color = "blue"
+label-show = true
+label-color = "blue"
+label-max-length = 23
+button-bg-color = "bg-surface-elevated"
+left-click = "playerctl play-pause"
+right-click = ""
+middle-click = "dropdown:media"
+scroll-up = ""
+scroll-down = ""
+[modules.media.player-icons]
+playing = ""
+paused = ""
+
+[modules.clock]
+format = "%H:%M"
+icon-name = "tb-calendar-time-symbolic"
+border-show = false
+border-color = "border-accent"
+tooltip-format= "%A, %B %d, %Y"
+icon-show = false
+icon-color = "auto"
+icon-bg-color = "accent"
+label-show = true
+label-color = "accent"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:calendar"
+right-click = "dropdown:weather"
+middle-click = ""
+scroll-up = ""
+scroll-down = ""
+dropdown-show-seconds = false
+
+[modules.netstat]
+poll-interval-ms = 2000
+interface = "auto"
+format = " {{ down_auto }}   {{ up_auto }}"
+icon-name = "tb-wifi-symbolic"
+border-show = false
+border-color = "red"
+icon-show = false
+icon-color = "auto"
+icon-bg-color = "red"
+label-show = true
+label-color = "red"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = ""
+right-click = ""
+middle-click = ""
+scroll-up = ""
+scroll-down = ""
+
+[modules.notification]
+icon-name = "ld-bell-symbolic"
+icon-unread = "ld-bell-dot-symbolic"
+icon-dnd = "ld-bell-off-symbolic"
+border-show = false
+border-color = "green"
+icon-show = true
+icon-color = "auto"
+icon-bg-color = "green"
+label-show = false
+label-color = "green"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "dropdown:notification"
+right-click = "wayle notify dnd"
+middle-click = ""
+scroll-up = ""
+scroll-down = ""
+blocklist = []
+icon-source = "automatic"
+popup-position = "top-right"
+popup-max-visible = 5
+popup-stacking-order = "newest-first"
+popup-duration = 5000
+popup-hover-pause = true
+popup-margin-x = 0.0
+popup-margin-y = 0.0
+popup-gap = 8.0
+popup-monitor = "primary"
+popup-close-behavior = "dismiss"
+popup-shadow = true
+popup-urgency-bar = "low"
+thresholds = []
+
+[modules.volume]
+level-icons = [
+    "ld-volume-symbolic",
+    "ld-volume-1-symbolic",
+    "ld-volume-2-symbolic",
+]
+icon-muted = "md-volume_off-symbolic"
+border-show = false
+border-color = "red"
+icon-show = true
+icon-color = "auto"
+icon-bg-color = "red"
+label-show = true
+label-color = "red"
+format = "{{ percent }}%"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "wayle audio output-mute"
+right-click = ""
+middle-click = "dropdown:audio"
+scroll-up = "wayle audio output-volume +5"
+scroll-down = "wayle audio output-volume -5"
+dropdown-app-icons = "mapped"
+thresholds = []
+
+[modules.microphone]
+icon-active = "ld-mic-symbolic"
+icon-muted = "ld-mic-off-symbolic"
+border-show = false
+border-color = "red"
+icon-show = true
+icon-color = "auto"
+icon-bg-color = "red"
+label-show = true
+label-color = "red"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "wayle audio input-mute"
+right-click = ""
+middle-click = "dropdown:audio"
+scroll-up = ""
+scroll-down = ""
+thresholds = []
