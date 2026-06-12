@@ -49,7 +49,7 @@ require("lazy").setup({
 	require("plugins.barbar"),
 	require("plugins.multicursor"),
 	-- { "typicode/bg.nvim", lazy = false },
-	{ "themaxmarchuk/tailwindcss-colors.nvim" },
+	{ "themaxmarchuk/tailwindcss-colors.nvim", lazy = false },
 	{ "nvim-java/nvim-java" },
 	{ "github/copilot.vim" },
 	{ "elkowar/yuck.vim" },
