@@ -1,5 +1,4 @@
 return {
-	-- DOCS: https://github.com/jake-stewart/multicursor.nvim?tab=readme-ov-file#how-to-use
 	"jake-stewart/multicursor.nvim",
 	branch = "1.0",
 	config = function()

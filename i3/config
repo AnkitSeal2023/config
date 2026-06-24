@@ -194,7 +194,7 @@ bindsym $mod+Shift+w exec "i3 workspace 9; brave --app=https://web.whatsapp.com/
 bindsym $mod+c exec code
 bindsym $mod+x exec xpad
 bindsym $mod+Shift+v exec /usr/bin/diodon
-bindsym Print exec flameshot gui
+bindsym $mod+Shift+s exec flameshot gui
 bindsym $mod+Shift+l exec betterlockscreen -l blur 
 bindsym $mod+Shift+Mod1+Control+Delete exec --no-startup-id ~/.config/i3/shutdown.sh
 bindsym $mod+Shift+Mod1+Control+R exec --no-startup-id ~/.config/i3/reboot.sh
