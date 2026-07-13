@@ -28,18 +28,58 @@ return {
 					},
 				})
 			end,
+			root_markers = {
+				{
+					"init.lua",
+					".emmyrc.json",
+					".luarc.json",
+				},
+				".git",
+			},
+
 			settings = {
 				Lua = {
 					format = { enable = false },
 				},
+				hint = {
+					enable = true,
+				},
+			},
+		})
+
+		vim.lsp.config("vscode-html-language-server", {
+			cmd = function(dispatchers, config)
+				local cmd = "vscode-html-language-server"
+				if (config or {}).root_dir then
+					local local_cmd = vim.fs.joinpath(config.root_dir, "node_modules/.bin", cmd)
+					if vim.fn.executable(local_cmd) == 1 then
+						cmd = local_cmd
+					end
+				end
+				return vim.lsp.rpc.start({ cmd, "--stdio" }, dispatchers)
+			end,
+			filetypes = { "html" },
+			root_markers = { "package.json", ".git" },
+			---@type lspconfig.settings.html
+			settings = {},
+			init_options = {
+				provideFormatter = true,
+				embeddedLanguages = { css = true, javascript = true },
+				configurationSection = { "html", "css", "javascript" },
 			},
 		})
 
 		vim.lsp.enable("lua_ls")
+		vim.lsp.enable("gopls")
 		vim.lsp.enable("pyright")
 		vim.lsp.enable("clangd")
 		vim.lsp.enable("ts_ls")
 		vim.lsp.enable("tailwindcss")
 		vim.lsp.enable("emmet_language_server")
+		vim.lsp.enable("bashls")
+		vim.lsp.enable("vscode-html-language-server")
+		vim.lsp.enable("jsonls")
+		vim.lsp.enable("cssls")
+		vim.lsp.enable("protols")
 	end,
 }

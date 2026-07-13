@@ -1,7 +1,9 @@
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
+vim.opt.softtabstop = 4
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.ignorecase = true
 vim.o.mouse = "a"
 vim.o.showmode = false
 vim.schedule(function()
@@ -22,3 +24,31 @@ vim.o.inccommand = "split"
 vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
+
+vim.opt.formatoptions = vim.opt.formatoptions + "ron2"
+
+vim.diagnostic.config({
+	virtual_lines = false,
+	virtual_text = {
+		prefix = "", -- Could be '●', '▎', or empty ''
+		source = "if_many", -- Show source only if there are multiple sources
+	},
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = "󰌵",
+		},
+		linehl = {
+			[vim.diagnostic.severity.ERROR] = "ErrorMsg",
+		},
+		numhl = {
+			[vim.diagnostic.severity.WARN] = "WarningMsg",
+		},
+	},
+	float = {
+		source = "if_many",
+		border = "rounded",
+	},
+})

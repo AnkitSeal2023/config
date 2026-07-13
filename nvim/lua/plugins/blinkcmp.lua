@@ -24,7 +24,9 @@ return {
 		-- C-k: Toggle signature help (if signature.enabled = true)
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
-		keymap = { preset = "default" },
+		keymap = {
+			["<Tab>"] = { "show", "accept" },
+		},
 
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -56,11 +58,15 @@ return {
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
 			default = { "lsp", "path", "snippets", "buffer" },
+			per_filetype = {
+				sql = { "snippets", "lsp", "dadbod", "buffer" },
+			},
 			providers = {
 				path = { score_offset = 100 },
 				lsp = { module = "blink.cmp.sources.lsp", score_offset = 95 },
 				buffer = { score_offset = 80 },
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 1 },
+				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
 			},
 		},
 

@@ -26,5 +26,17 @@ require("lazy").setup({
 	require("plugins.statusline"),
 	require("plugins.telescope"),
 	require("plugins.barbar"),
+	require("plugins.undotree"),
+	require("plugins.indentline"),
+	require("plugins.treesitter"),
+	require("plugins.tokyonight"),
+	require("plugins.copilot"),
+	require("plugins.fold-origami"),
+	require("plugins.auto-tag-html"),
+	require("plugins.statuscol"),
+	require("plugins.whichkey"),
+	require("plugins.gitblame"),
+	require("plugins.todocomments"),
+	require("plugins.markdown-render"),
+	require("plugins.dadbod"),
 })
-require("mason").setup({})
