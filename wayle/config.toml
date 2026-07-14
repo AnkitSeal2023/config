@@ -48,7 +48,7 @@ dropdown-freeze-label = true
 [[bar.layout]]
 monitor = "*"
 left = ["hyprland-workspaces", "media", "cava"]
-right = ["netstat","ram", {name = "audio" , modules = ["volume", "microphone"]}, "systray"]
+right = ["bluetooth", "netstat","ram", {name = "audio" , modules = ["volume", "microphone"]}, "systray"]
 center = ["clock", "dashboard", "notifications"]
 
 [modules.hyprland-workspaces]
@@ -233,3 +233,24 @@ middle-click = "dropdown:audio"
 scroll-up = ""
 scroll-down = ""
 thresholds = []
+
+
+[modules.idle-inhibit]
+startup-duration = 300
+icon-inactive = "tb-coffee-off-symbolic"
+icon-active = "tb-coffee-symbolic"
+format = "{{ state }}"
+border-show = false
+border-color = "green"
+icon-show = true
+icon-color = "auto"
+icon-bg-color = "green"
+label-show = true
+label-color = "green"
+label-max-length = 0
+button-bg-color = "bg-surface-elevated"
+left-click = "wayle idle toggle --indefinite"
+right-click = "wayle idle toggle"
+middle-click = ""
+scroll-up = ""
+scroll-down = ""

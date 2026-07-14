@@ -29,6 +29,7 @@ right = [
     "volume",
     "microphone",
 ] },
+    "bluetooth",
     "systray",
     "dashboard",
 ]
@@ -46,6 +47,11 @@ red = "#babbf1"
 yellow = "#babbf1"
 green = "#babbf1"
 blue = "#babbf1"
+
+[modules.bluetooth]
+icon-bg-color = "bg-surface"
+label-color = "red"
+button-bg-color = "bg-surface"
 
 [modules.cava]
 bars = 40
@@ -68,13 +74,15 @@ container-bg-color = "bg-surface"
 [modules.media]
 button-bg-color = "bg-surface"
 
+[modules.media.player-icons]
+
 [modules.microphone]
 button-bg-color = "transparent"
 
 [modules.netstat]
 button-bg-color = "bg-surface"
 
-[modules.notification]
+[modules.notifications]
 button-bg-color = "bg-surface"
 
 [modules.ram]

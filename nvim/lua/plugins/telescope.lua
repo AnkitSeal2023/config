@@ -6,16 +6,6 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
 
-	opts = {
-		defaults = {
-			mappings = {
-				i = {
-					["<C-h>"] = "which_key",
-				},
-			},
-		},
-	},
-
 	config = function()
 		local builtin = require("telescope.builtin")
 
@@ -23,5 +13,13 @@ return {
 		vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
 		vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Help Tags" })
+
+		require("telescope").setup({
+			pickers = {
+				colorscheme = {
+					enable_preview = true,
+				},
+			},
+		})
 	end,
 }
