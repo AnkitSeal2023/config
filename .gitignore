@@ -30,6 +30,7 @@
 !hyprpanel/
 !waybar/
 !wayle/
+!tmux/
 # And not their contents
 !normalCmds/**
 !i3/**
@@ -61,7 +62,7 @@
 !swaync1/**
 !rofi/**
 !hyprpanel/** 
-!tmux/tmux.conf
+!tmux/**
 !waybar/**
 !wayle/**
 wayle/wayle-repo/**

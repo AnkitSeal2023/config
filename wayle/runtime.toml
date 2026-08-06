@@ -29,6 +29,7 @@ right = [
     "volume",
     "microphone",
 ] },
+    "network",
     "bluetooth",
     "systray",
     "dashboard",
@@ -43,14 +44,15 @@ surface = "#13262e"
 elevated = "#13262e"
 fg-muted = "#babbf1"
 primary = "#babbf1"
-red = "#babbf1"
-yellow = "#babbf1"
-green = "#babbf1"
-blue = "#babbf1"
+red = "#e01b24"
+yellow = "#f6d32d"
+green = "#33d17a"
+blue = "#1c71d8"
 
 [modules.bluetooth]
+icon-color = "status-info"
 icon-bg-color = "bg-surface"
-label-color = "red"
+label-color = "accent"
 button-bg-color = "bg-surface"
 
 [modules.cava]
@@ -60,8 +62,13 @@ button-bg-color = "bg-surface"
 bar-width = 2
 
 [modules.clock]
-label-color = "fg-default"
+format = "%d/%m/%y — %H:%M"
+icon-color = "accent"
 button-bg-color = "bg-surface"
+
+[modules.dashboard]
+border-color = "accent"
+icon-bg-color = "fg-muted"
 
 [modules.hyprland-workspaces]
 icon-size = 0.75
@@ -72,26 +79,45 @@ occupied-color = "fg-default"
 container-bg-color = "bg-surface"
 
 [modules.media]
+icon-color = "green"
+icon-bg-color = "transparent"
+label-color = "fg-muted"
 button-bg-color = "bg-surface"
 
 [modules.media.player-icons]
 
 [modules.microphone]
+icon-color = "accent"
+icon-bg-color = "accent"
+label-color = "accent"
 button-bg-color = "transparent"
 
+[modules.network]
+button-bg-color = "bg-surface"
+
 [modules.netstat]
+label-color = "accent"
 button-bg-color = "bg-surface"
 
 [modules.notifications]
+border-color = "bg-base"
+icon-color = "fg-muted"
+icon-bg-color = "transparent"
+label-color = "fg-muted"
 button-bg-color = "bg-surface"
 
 [modules.ram]
+icon-color = "fg-muted"
+label-color = "accent"
 button-bg-color = "bg-surface"
 
 [modules.systray]
 button-bg-color = "bg-surface"
 
 [modules.volume]
+icon-color = "accent"
+icon-bg-color = "accent"
+label-color = "accent"
 button-bg-color = "transparent"
 
 [modules.weather]

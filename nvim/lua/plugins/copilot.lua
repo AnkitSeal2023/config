@@ -33,13 +33,13 @@ return {
 				debounce = 15,
 				trigger_on_accept = true,
 				keymap = {
-					accept = "<M-l>",
-					accept_word = "<M-w>",
+					accept = "<A-l>",
+					accept_word = "<A-C-w>",
 					accept_line = false,
-					next = "<M-]>",
-					prev = "<M-[>",
+					next = "<A-]>",
+					prev = "<A-[>",
 					dismiss = "<C-]>",
-					toggle_auto_trigger = "<M-e>",
+					toggle_auto_trigger = "<A-e>",
 				},
 			},
 			nes = {
