@@ -10,31 +10,6 @@ button-label-weight = "bold"
 button-group-background = "bg-surface"
 button-group-opacity = 70
 
-[[bar.layout]]
-monitor = "*"
-show = true
-left = [
-    "hyprland-workspaces",
-    "media",
-    "cava",
-]
-center = [
-    "clock",
-    "notifications",
-]
-right = [
-    "netstat",
-    "ram",
-    { name = "audio", modules = [
-    "volume",
-    "microphone",
-] },
-    "network",
-    "bluetooth",
-    "systray",
-    "dashboard",
-]
-
 [styling]
 scale = 1.0
 

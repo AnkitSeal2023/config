@@ -47,9 +47,50 @@ dropdown-freeze-label = true
 
 [[bar.layout]]
 monitor = "*"
-left = ["hyprland-workspaces", "media", "cava"]
-right = ["bluetooth", "netstat","ram", {name = "audio" , modules = ["volume", "microphone"]}, "systray"]
-center = ["clock", "dashboard", "notifications"]
+show = true
+left = [
+    "hyprland-workspaces",
+    "media",
+    "cava",
+]
+center = [
+    "clock",
+	"idle-inhibit",
+    "notifications",
+]
+right = [
+    "netstat",
+    "ram",
+    { name = "audio", modules = [
+    "volume",
+    "microphone",
+] },
+    "network",
+    "bluetooth",
+    "systray",
+    "dashboard",
+]
+
+[modules.ram]
+icon-color = "fg-muted"
+label-color = "accent"
+button-bg-color = "bg-surface"
+
+[modules.network]
+button-bg-color = "bg-surface"
+
+[modules.cava]
+bars = 40
+color = "#babbf1"
+button-bg-color = "bg-surface"
+bar-width = 2
+
+
+[modules.bluetooth]
+icon-color = "status-info"
+icon-bg-color = "bg-surface"
+label-color = "accent"
+button-bg-color = "bg-surface"
 
 [modules.hyprland-workspaces]
 min-workspace-count = 1
@@ -117,24 +158,10 @@ playing = ""
 paused = ""
 
 [modules.clock]
-format = "%H:%M"
-icon-name = "tb-calendar-time-symbolic"
-border-show = false
-border-color = "border-accent"
-tooltip-format= "%A, %B %d, %Y"
+format = "%d/%m/%y — %H:%M"
+icon-color = "accent"
+button-bg-color = "bg-surface"
 icon-show = false
-icon-color = "auto"
-icon-bg-color = "accent"
-label-show = true
-label-color = "accent"
-label-max-length = 0
-button-bg-color = "bg-surface-elevated"
-left-click = "dropdown:calendar"
-right-click = "dropdown:weather"
-middle-click = ""
-scroll-up = ""
-scroll-down = ""
-dropdown-show-seconds = false
 
 [modules.netstat]
 poll-interval-ms = 2000
@@ -236,19 +263,19 @@ thresholds = []
 
 
 [modules.idle-inhibit]
-startup-duration = 300
+startup-duration = 1
 icon-inactive = "tb-coffee-off-symbolic"
 icon-active = "tb-coffee-symbolic"
 format = "{{ state }}"
 border-show = false
 border-color = "green"
 icon-show = true
-icon-color = "auto"
+icon-color = "accent"
 icon-bg-color = "green"
-label-show = true
-label-color = "green"
+label-show = false
+label-color = "accetn"
 label-max-length = 0
-button-bg-color = "bg-surface-elevated"
+button-bg-color = "bg-surface"
 left-click = "wayle idle toggle --indefinite"
 right-click = "wayle idle toggle"
 middle-click = ""
