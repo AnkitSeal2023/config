@@ -44,6 +44,7 @@ button-bg-color = "bg-surface"
 [modules.dashboard]
 border-color = "accent"
 icon-bg-color = "fg-muted"
+right-click = "exec kitty"
 
 [modules.hyprland-workspaces]
 icon-size = 0.75
