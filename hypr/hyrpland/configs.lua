@@ -15,6 +15,16 @@ hl.config({
 		layout = "hy3",
 	},
 
+	plugin = {
+		hy3 = {
+			no_gaps_when_only = 0,
+			autotile = {
+				enable = true,
+				workspaces = "all",
+			},
+		},
+	},
+
 	decoration = {
 		rounding = 10,
 		rounding_power = 2,

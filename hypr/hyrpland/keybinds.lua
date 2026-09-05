@@ -11,10 +11,18 @@ hl.bind(MainMod .. " + SHIFT + V", hl.dsp.exec_cmd("copyq toggle"), { locked = t
 hl.bind(MainMod .. " + N", hl.dsp.exec_cmd("wayle notify dnd"), { locked = true })
 hl.bind(MainMod .. " + E", hl.dsp.exec_cmd(FileManager))
 hl.bind(MainMod .. " + A", hl.dsp.exec_cmd(Menu))
-hl.bind(MainMod .. " + B", hl.dsp.exec_cmd("zen-browser"))
-
+hl.bind(MainMod .. " + B", hl.dsp.exec_cmd("brave"))
+hl.bind("SUPER + SHIFT + W", function()
+	hl.dispatch(hl.dsp.workspace.toggle_special("whatsapp"))
+	-- hl.exec_cmd("/opt/brave-bin/brave --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm")
+	hl.exec_cmd("firefox web.whatsapp.com")
+end)
 hl.bind(MainMod .. " + SHIFT+ SPACE", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(MainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(MainMod .. " + Return", hl.dsp.window.fullscreen())
+hl.bind(MainMod .. " + F10", hl.dsp.exec_cmd("/home/ankit/.config/ocr.sh &"))
+hl.bind("CTRL + ALT + A", hl.dsp.exec_cmd("playerctl position 5-"))
+hl.bind("CTRL + ALT + D", hl.dsp.exec_cmd("playerctl position 5+"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -63,13 +71,17 @@ hl.bind(
 )
 hl.bind(
 	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+	hl.dsp.exec_cmd(
+		"pactl set-source-mute @DEFAULT_SOURCE@ toggle ; pactl set-source-volume alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback 100%"
+	),
 	{ locked = true, repeating = true }
 )
 
 hl.bind(
 	MainMod .. " + m",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+	hl.dsp.exec_cmd(
+		"pactl set-source-mute @DEFAULT_SOURCE@ toggle ; pactl set-source-volume alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback 100%"
+	),
 	{ locked = true, repeating = true }
 )
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
@@ -78,6 +90,7 @@ hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"
 -- Requires playerctl
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("CTRL + ALT + SPACE", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
