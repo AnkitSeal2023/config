@@ -10,6 +10,33 @@ button-label-weight = "bold"
 button-group-background = "bg-surface"
 button-group-opacity = 70
 
+[[bar.layout]]
+monitor = "*"
+show = true
+left = [
+    "hyprland-workspaces",
+    "media",
+    "cava",
+]
+center = [
+    "clock",
+    "idle-inhibit",
+    "notifications",
+]
+right = [
+    "netstat",
+    "cpu",
+    "ram",
+    { name = "audio", modules = [
+    "volume",
+    "microphone",
+] },
+    "network",
+    "bluetooth",
+    "systray",
+    "dashboard",
+]
+
 [styling]
 scale = 1.0
 
@@ -41,8 +68,16 @@ format = "%d/%m/%y — %H:%M"
 icon-color = "accent"
 button-bg-color = "bg-surface"
 
+[modules.cpu]
+border-color = "fg-muted"
+icon-color = "accent"
+icon-bg-color = "fg-default"
+label-color = "accent"
+button-bg-color = "bg-surface"
+
 [modules.dashboard]
 border-color = "accent"
+icon-color = "status-success"
 icon-bg-color = "fg-muted"
 right-click = "exec kitty"
 
@@ -81,6 +116,8 @@ icon-color = "fg-muted"
 icon-bg-color = "transparent"
 label-color = "fg-muted"
 button-bg-color = "bg-surface"
+popup-close-behavior = "remove"
+popup-urgency-bar = "none"
 
 [modules.ram]
 icon-color = "fg-muted"

@@ -119,18 +119,17 @@ container-bg-color = "bg-surface-elevated"
 border-show = false
 border-color = "border-default"
 
-[modules.hyprland-workspaces.app-icon-map]
 [modules.hyprland-workspaces.workspace-map]
-1 = { icon = "media-record-symbolic" }
-2 = { icon = "media-record-symbolic" }
-3 = { icon = "media-record-symbolic" }
-4 = { icon = "media-record-symbolic" }
-5 = { icon = "media-record-symbolic" }
-6 = { icon = "media-record-symbolic" }
-7 = { icon = "media-record-symbolic" }
-8 = { icon = "media-record-symbolic" }
-9 = { icon = "media-record-symbolic" }
-10 = { icon = "media-record-symbolic" }
+# 1 = { icon = "media-record-symbolic" }
+# 2 = { icon = "media-record-symbolic" }
+# 3 = { icon = "media-record-symbolic" }
+# 4 = { icon = "media-record-symbolic" }
+# 5 = { icon = "media-record-symbolic" }
+# 6 = { icon = "media-record-symbolic" }
+# 7 = { icon = "media-record-symbolic" }
+# 8 = { icon = "media-record-symbolic" }
+# 9 = { icon = "media-record-symbolic" }
+# 10 = { icon = "media-record-symbolic" }
 
 [modules.media]
 icon-type = "spinning-disc"

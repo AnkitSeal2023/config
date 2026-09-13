@@ -12,6 +12,7 @@ hl.bind(MainMod .. " + N", hl.dsp.exec_cmd("wayle notify dnd"), { locked = true 
 hl.bind(MainMod .. " + E", hl.dsp.exec_cmd(FileManager))
 hl.bind(MainMod .. " + A", hl.dsp.exec_cmd(Menu))
 hl.bind(MainMod .. " + B", hl.dsp.exec_cmd("brave"))
+hl.bind("SUPER + ALT + SHIFT + CTRL + DELETE", hl.dsp.exec_cmd("shutdown now"))
 hl.bind("SUPER + SHIFT + W", function()
 	hl.dispatch(hl.dsp.workspace.toggle_special("whatsapp"))
 	-- hl.exec_cmd("/opt/brave-bin/brave --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm")
