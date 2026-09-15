@@ -2,8 +2,20 @@
 local closeWindowBind = hl.bind(MainMod .. " + Q", hl.dsp.window.close())
 hl.bind(
 	MainMod .. " + SHIFT + E",
-	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
+	hl.dsp.exec_cmd([[
+        if zenity --question \
+            --title="Exit Hyprland" \
+            --text="Are you sure you want to exit?"; then
+
+            if command -v hyprshutdown >/dev/null 2>&1; then
+                hyprshutdown
+            else
+                hyprctl dispatch 'hl.dsp.exit()'
+            fi
+        fi
+    ]])
 )
+
 hl.bind(MainMod .. " + T", hl.dsp.exec_cmd(Terminal))
 hl.bind(MainMod .. " + SHIFT + S", hl.dsp.exec_cmd("flameshot gui"), { locked = true })
 hl.bind(MainMod .. " + SHIFT + A", hl.dsp.exec_cmd("smile"), { locked = true })
