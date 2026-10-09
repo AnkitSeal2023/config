@@ -12,6 +12,7 @@ hl.config({
 
 		resize_on_border = false,
 		allow_tearing = false,
+		-- layout = "dwindle",
 		layout = "hy3",
 	},
 
@@ -21,6 +22,23 @@ hl.config({
 			autotile = {
 				enable = true,
 				workspaces = "all",
+			},
+			tabs = {
+				height = 5,
+				from_top = true,
+				opacity = 0.6,
+				radius = 15,
+				border_width = 2,
+				text_height = 8,
+				render_text = false,
+				colors = {
+					active = "rgba(33ccffee)",
+					active_border = "rgba(33ccffee)",
+					inactive = "rgba(606060aa)",
+					inactive_border = "rgba(606060aa)",
+					focused = "rgba(808080ee)",
+					focused_border = "rgba(808080ee)",
+				},
 			},
 		},
 	},

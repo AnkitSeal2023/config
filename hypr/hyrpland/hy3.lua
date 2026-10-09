@@ -1,7 +1,6 @@
 local hy3 = hl.plugin.hy3
 
 hy3.set_ephemeral(true)
--- hy3.auto_tile(true)
 --
 hl.bind(
 	MainMod .. "+LEFT",
