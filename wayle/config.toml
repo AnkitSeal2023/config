@@ -4,10 +4,11 @@ font-sans = "JetBrains Mono Nerd Font"
 [bar]
 scale = 0.699999988079071
 location = "bottom"
-inset-ends = 0.5
+inset-ends = 0.4
 padding = 0.4000000059604645
 padding-ends = 0.4000000059604645
 module-gap = 0.4000000059604645
+inset-edge = 0.4
 bg = "bg-base"
 border-width = 1
 rounding = "lg"
@@ -24,27 +25,30 @@ button-group-opacity = 70
 monitor = "*"
 show = true
 left = [
-    "hyprland-workspaces",
-    "media",
-    "cava",
+  "hyprland-workspaces",
+  "media",
+  "cava",
 ]
 center = [
-    "clock",
-    "idle-inhibit",
-    "notifications",
+  "clock",
+  "idle-inhibit",
+  "notifications",
 ]
 right = [
-    "netstat",
-    "cpu",
-    "ram",
-    { name = "audio", modules = [
-    "volume",
-    "microphone",
-] },
-    "network",
-    "bluetooth",
-    "systray",
-    "dashboard",
+  "netstat",
+  "cpu",
+  "ram",
+  {
+    name = "audio",
+    modules = [
+      "volume",
+      "microphone",
+    ]
+  },
+  "network",
+  "bluetooth",
+  "systray",
+  "dashboard",
 ]
 
 [styling]
@@ -99,7 +103,7 @@ right-click = "exec kitty"
 
 [modules.hyprland-workspaces]
 min-workspace-count = 0
-show-special = false 
+show-special = false
 divider = "|"
 app-icons-show = true
 workspace-padding = 0.5
@@ -115,6 +119,13 @@ icon-color = "fg-default"
 icon-bg-color = "bg-surface"
 
 [modules.media]
+left-click = "exec playerctl play-pause"
+format = "{{status_icon}} {{ title }} - {{ artist }}"
+spinning-disc-icon = "si-spotify-symbolic"
+icon-show = true
+icon-type = "spinning-disc"
+icon-name = "si-spotify-symbolic"
+middle-click = "dropdown:media"
 border-color = "green"
 icon-color = "green"
 icon-bg-color = "transparent"
@@ -130,6 +141,8 @@ label-color = "fg-default"
 button-bg-color = "transparent"
 scroll-up = "wayle audio input-volume +5"
 scroll-down = "wayle audio input-volume -5"
+left-click = "wayle audio input-mute"
+middle-click = "dropdown:audio"
 
 [modules.network]
 border-color = "fg-default"
@@ -141,6 +154,7 @@ button-bg-color = "bg-surface"
 [modules.netstat]
 label-color = "fg-default"
 format = " {{ down_auto }}   {{ up_auto }}"
+left-click = "dropdown:netstat"
 icon-show = false
 button-bg-color = "bg-surface"
 
@@ -169,6 +183,10 @@ button-bg-color = "bg-surface"
 
 [modules.volume]
 icon-color = "bg-elevated"
+scroll-up = "wayle audio output-volume +5"
+scroll-down = "wayle audio output-volume -5"
+left-click = "wayle audio output-mute"
+middle-click = "dropdown:audio"
 icon-bg-color = "green"
 label-color = "fg-default"
 button-bg-color = "transparent"

@@ -4,7 +4,10 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpm reload -n")
 	hl.exec_cmd("wl-paste --watch cliphist store")
 	hl.exec_cmd("wayle panel start ")
-	hl.exec_cmd("hyprpaper --config ~/.config/hypr/hyprpaper.conf ")
+	hl.exec_cmd(
+		'mpvpaper -o "no-audio --loop-file=inf --no-input-default-bindings" HDMI-A-1 "/home/ankit/Downloads/test video 1080p.webm"'
+	)
+	hl.exec_cmd("mpvpaper  ")
 	hl.exec_cmd("kdeconnectd ")
 	hl.exec_cmd("kdeconnect-indicator ")
 	hl.exec_cmd("hypridle ")
