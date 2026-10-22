@@ -26,7 +26,7 @@ hl.monitor({
 })
 
 ---- ENVIRONMENT VARIABLES ----
-hl.env("GTK_THEME", "Dracula")
+-- hl.env("GTK_THEME", "Dracula")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XCURSOR_THEME", "Future-cyan-cursors")
 hl.env("HYPRCURSOR_THEME", "Future-cyan-cursors")

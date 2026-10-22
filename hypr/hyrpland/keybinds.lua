@@ -24,6 +24,7 @@ hl.bind(MainMod .. " + N", hl.dsp.exec_cmd("wayle notify dnd"), { locked = true 
 hl.bind(MainMod .. " + E", hl.dsp.exec_cmd(FileManager))
 hl.bind(MainMod .. " + A", hl.dsp.exec_cmd(Menu))
 hl.bind(MainMod .. " + B", hl.dsp.exec_cmd("brave"))
+hl.bind(MainMod .. " + CTRL + W", hl.dsp.exec_cmd("killall wayle; wayle panel restart"))
 hl.bind("SUPER + ALT + SHIFT + CTRL + DELETE", hl.dsp.exec_cmd("shutdown now"))
 hl.bind("SUPER + SHIFT + W", function()
 	hl.dispatch(hl.dsp.workspace.toggle_special("whatsapp"))
@@ -108,8 +109,12 @@ hl.bind(
 	),
 	{ locked = true, repeating = true }
 )
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
+-- hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("/home/ankit/.local/bin/brightnessctl up"))
+hl.bind(
+	"XF86MonBrightnessDown",
+	hl.dsp.exec_cmd("/home/ankit/.local/bin/brightnessctl down >> /home/ankit/Downloads/file.txt")
+)
 
 -- Requires playerctl
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })

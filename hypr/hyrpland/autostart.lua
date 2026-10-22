@@ -4,13 +4,14 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("hyprpm reload -n")
 	hl.exec_cmd("wl-paste --watch cliphist store")
 	hl.exec_cmd("wayle panel start ")
-	hl.exec_cmd(
-		'mpvpaper -o "no-audio --loop-file=inf --no-input-default-bindings" HDMI-A-1 "/home/ankit/Downloads/test video 1080p.webm"'
-	)
-	hl.exec_cmd("mpvpaper  ")
+	-- hl.exec_cmd(
+	-- 	'mpvpaper -o "no-audio --loop-file=inf --no-input-default-bindings" HDMI-A-1 "/home/ankit/Downloads/test video 1080p.webm"'
+	-- )
+	hl.exec_cmd("hyprpaper")
 	hl.exec_cmd("kdeconnectd ")
 	hl.exec_cmd("kdeconnect-indicator ")
 	hl.exec_cmd("hypridle ")
-	hl.exec_cmd("gammastep -l 22.5744:88.3629 ")
+	-- hl.exec_cmd("gammastep -l 22.5744:88.3629 ")
+	hl.exec_cmd("gammastep -l 22.5744:88.3629 -t 6200:4000")
 	hl.exec_cmd("copyq")
 end)

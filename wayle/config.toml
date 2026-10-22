@@ -3,6 +3,7 @@ font-sans = "JetBrains Mono Nerd Font"
 
 [bar]
 scale = 0.699999988079071
+background-opacity = 100
 location = "bottom"
 inset-ends = 0.4
 padding = 0.4000000059604645
@@ -10,16 +11,17 @@ padding-ends = 0.4000000059604645
 module-gap = 0.4000000059604645
 inset-edge = 0.4
 bg = "bg-base"
-border-width = 1
+border-width = 0
 rounding = "lg"
 button-variant = "icon-square"
-button-bg-opacity = 70
+button-icon-position = "end"
+button-bg-opacity = 100
 button-icon-size = 0.949999988079071
 button-label-size = 1.2000000476837158
 button-label-weight = "bold"
 button-rounding = "lg"
 button-group-background = "bg-surface"
-button-group-opacity = 70
+button-group-opacity = 100
 
 [[bar.layout]]
 monitor = "*"
@@ -82,7 +84,7 @@ bar-width = 2
 border-color = "green"
 
 [modules.clock]
-format = "%d/%m/%y — %H:%M"
+format = "%d/%m/%y — %H:%M:%S"
 border-color = "yellow"
 icon-color = "accent"
 icon-show = false
@@ -117,6 +119,7 @@ border-color = "yellow"
 label-show = false
 icon-color = "fg-default"
 icon-bg-color = "bg-surface"
+button-bg-color = "bg-surface"
 
 [modules.media]
 left-click = "exec playerctl play-pause"
