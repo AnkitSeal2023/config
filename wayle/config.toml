@@ -40,6 +40,7 @@ right = [
   "netstat",
   "cpu",
   "ram",
+  "custom-brightness",
   {
     name = "audio",
     modules = [
@@ -175,6 +176,18 @@ popup-urgency-bar = "none"
 icon-color = "bg-elevated"
 label-color = "fg-default"
 button-bg-color = "bg-surface"
+right-click = "dropdown:system-info"
+
+[[modules.custom]]
+id = "brightness"
+label-show = false
+icon-color = "bg-surface"
+icon-bg-color = "green"
+label-color = "fg-default"
+button-bg-color = "bg-surface"
+icon-name = "ld-sun-symbolic"
+left-click = "dropdown:brightness"
+right-click = "dropdown:contrast"
 
 [modules.separator]
 color = "fg-default"
@@ -196,6 +209,88 @@ button-bg-color = "transparent"
 
 [modules.weather]
 location = "Kolkata"
+
+# Demo: user-defined dropdown panels (opened via `dropdown:<id>` click actions).
+[[modules.dropdowns]]
+id = "system-info"
+title = "System"
+width = 320
+interval-ms = 5000
+close-on-click = false
+command = '''
+kernel=$(uname -r)
+up=$(uptime -p | sed 's/^up //')
+mem=$(free -m | awk 'NR==2 {printf "%s / %s MiB", $3, $2}')
+disk=$(df -h / | awk 'NR==2 {print $3 " / " $2}')
+jq -cn --arg k "$kernel" --arg u "$up" --arg m "$mem" --arg d "$disk" \
+  '{items: ["Kernel:  \($k)", "Uptime:  \($u)", "Memory:  \($m)", "Disk:    \($d)"]}'
+'''
+
+[[modules.dropdowns]]
+id = "brightness"
+icon = "ld-sun-symbolic"
+title = "Brightness"
+width = 320
+interval-ms = 5000
+close-on-click = false
+
+[[modules.dropdowns.items]]
+label = "20%"
+icon = "ld-moon-symbolic"
+command = "ddcutil --bus 5 setvcp 10 20"
+
+[[modules.dropdowns.items]]
+label = "40%"
+icon = "ld-sun-moon-symbolic"
+command = "ddcutil --bus 5 setvcp 10 40"
+
+[[modules.dropdowns.items]]
+label = "60%"
+icon = "ld-sun-dim-symbolic"
+command = "ddcutil --bus 5 setvcp 10 60"
+
+[[modules.dropdowns.items]]
+label = "80%"
+icon = "ld-sun-medium-symbolic"
+command = "ddcutil --bus 5 setvcp 10 80"
+
+[[modules.dropdowns.items]]
+label = "100%"
+icon = "ld-sun-symbolic"
+command = "ddcutil --bus 5 setvcp 10 100"
+
+[[modules.dropdowns]]
+id = "contrast"
+icon = "ld-sun-symbolic"
+title = "Contrast"
+width = 320
+interval-ms = 5000
+close-on-click = false
+
+[[modules.dropdowns.items]]
+label = "20%"
+icon = "ld-moon-symbolic"
+command = "ddcutil --bus 5 setvcp 12 20"
+
+[[modules.dropdowns.items]]
+label = "40%"
+icon = "ld-sun-moon-symbolic"
+command = "ddcutil --bus 5 setvcp 12 40"
+
+[[modules.dropdowns.items]]
+label = "60%"
+icon = "ld-sun-dim-symbolic"
+command = "ddcutil --bus 5 setvcp 12 60"
+
+[[modules.dropdowns.items]]
+label = "80%"
+icon = "ld-sun-medium-symbolic"
+command = "ddcutil --bus 5 setvcp 12 80"
+
+[[modules.dropdowns.items]]
+label = "100%"
+icon = "ld-sun-symbolic"
+command = "ddcutil --bus 5 setvcp 12 100"
 
 [wallpaper]
 engine-enabled = false
